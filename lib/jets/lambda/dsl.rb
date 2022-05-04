@@ -68,6 +68,7 @@ module Jets::Lambda::Dsl
         tracing_config
         vpc_config
         tags
+        file_system_configs
       ]
       PROPERTIES.each do |property|
         # Example:
