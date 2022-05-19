@@ -17,7 +17,9 @@ module Jets::Builders
       end
 
       # found gems will only have gems that were found
-      found_gems.each do |gem_name|
+      ignore_gems = Jets.config.gems.ignore_native || []
+
+      (found_gems- ignore_gems).each do |gem_name|
         gem_extractor = Jets::Gems::Extract::Gem.new(gem_name, @options)
         gem_extractor.run
         rename_gem(gem_name)
